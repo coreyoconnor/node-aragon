@@ -1,6 +1,50 @@
 [
   {
-    "payable": true,
-    "type": "fallback"
+    "constant": true,
+    "inputs": [
+      {
+        "name": "_sender",
+        "type": "address"
+      },
+      {
+        "name": "_evmCallScript",
+        "type": "bytes"
+      }
+    ],
+    "name": "canForward",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_evmCallScript",
+        "type": "bytes"
+      }
+    ],
+    "name": "forward",
+    "outputs": [],
+    "payable": false,
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "isForwarder",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": false,
+    "type": "function"
   }
 ]
