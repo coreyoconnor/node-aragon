@@ -8,9 +8,12 @@ import ACL from '../core/ACL'
 import apm from '../apm'
 
 export default class Aragon {
-  constructor (daoAddress, provider) {
+  constructor (daoAddress, userAddress, provider) {
     // Set up Web3
     this.web3 = new Web3(provider)
+
+    // Set user address
+    this.userAddress = userAddress
 
     // Set up the kernel proxy (which is located at the "DAO address")
     this.kernelProxy = new Proxy(
@@ -22,6 +25,14 @@ export default class Aragon {
 
     // Set up transaction queue
     this.transactions = new Subject()
+  }
+
+  setUserAddress (userAddress) {
+    this.userAddress = userAddress
+  }
+
+  getUserAddress () {
+    return this.userAddress
   }
 
   kernel () {
