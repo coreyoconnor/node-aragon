@@ -46,7 +46,7 @@
     "documentation": "^5.3.3",
     "eslint-plugin-flowtype": "^2.39.1",
     "flow-bin": "^0.57.3",
-    "ganache-core": "^1.1.3",
+    "ganache-core": "^1.1.4",
     "nyc": "^11.2.1",
     "standard": "^10.0.3"
   },
