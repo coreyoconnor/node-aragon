@@ -45,8 +45,10 @@
     "coveralls": "^2.13.1",
     "documentation": "^5.3.3",
     "eslint-plugin-flowtype": "^2.39.1",
+    "eth-ens-namehash": "^2.0.8",
     "flow-bin": "^0.57.3",
     "ganache-core": "^1.1.4",
+    "js-sha3": "^0.7.0",
     "nyc": "^11.2.1",
     "standard": "^10.0.3"
   },
@@ -54,7 +56,6 @@
     "aragon-core": "0.0.0",
     "babel-core": "^6.26.0",
     "debug": "^3.0.0",
-    "eth-ens-namehash": "^2.0.0",
     "ipfs-api": "^14.3.5",
     "rxdb": "^5.2.1",
     "rxjs": "^5.4.2",
