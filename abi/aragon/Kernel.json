@@ -1,5 +1,27 @@
 [
   {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_entity",
+        "type": "address"
+      },
+      {
+        "name": "_app",
+        "type": "address"
+      },
+      {
+        "name": "_role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "grantPermission",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
     "constant": true,
     "inputs": [
       {
@@ -15,6 +37,53 @@
       }
     ],
     "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [],
+    "name": "CREATE_PERMISSIONS_ROLE",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bytes32"
+      }
+    ],
+    "payable": false,
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_appId",
+        "type": "bytes32"
+      },
+      {
+        "name": "_code",
+        "type": "address"
+      }
+    ],
+    "name": "setAppCode",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_newKernel",
+        "type": "address"
+      }
+    ],
+    "name": "upgradeKernel",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -33,7 +102,7 @@
         "type": "bytes32"
       }
     ],
-    "name": "canPerform",
+    "name": "hasPermission",
     "outputs": [
       {
         "name": "",
@@ -41,71 +110,7 @@
       }
     ],
     "payable": false,
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [
-      {
-        "name": "_app",
-        "type": "address"
-      },
-      {
-        "name": "_role",
-        "type": "bytes32"
-      }
-    ],
-    "name": "getPermissionInstances",
-    "outputs": [
-      {
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "payable": false,
-    "type": "function"
-  },
-  {
-    "constant": true,
-    "inputs": [],
-    "name": "CREATE_PERMISSIONS_ROLE",
-    "outputs": [
-      {
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "payable": false,
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_appId",
-        "type": "bytes32"
-      },
-      {
-        "name": "_code",
-        "type": "address"
-      }
-    ],
-    "name": "setAppCode",
-    "outputs": [],
-    "payable": false,
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_newKernel",
-        "type": "address"
-      }
-    ],
-    "name": "upgradeKernel",
-    "outputs": [],
-    "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -119,6 +124,7 @@
       }
     ],
     "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -132,6 +138,7 @@
       }
     ],
     "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -153,13 +160,14 @@
     "name": "revokePermission",
     "outputs": [],
     "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "constant": true,
+    "constant": false,
     "inputs": [
       {
-        "name": "_entity",
+        "name": "_newManager",
         "type": "address"
       },
       {
@@ -171,18 +179,33 @@
         "type": "bytes32"
       }
     ],
-    "name": "getPermission",
-    "outputs": [
+    "name": "setPermissionManager",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": true,
+    "inputs": [
       {
-        "name": "allowed",
-        "type": "bool"
+        "name": "_app",
+        "type": "address"
       },
       {
-        "name": "parent",
+        "name": "_role",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getPermissionManager",
+    "outputs": [
+      {
+        "name": "",
         "type": "address"
       }
     ],
     "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -201,13 +224,14 @@
         "type": "bytes32"
       },
       {
-        "name": "_parent",
+        "name": "_manager",
         "type": "address"
       }
     ],
     "name": "createPermission",
     "outputs": [],
     "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -221,6 +245,7 @@
     "name": "initialize",
     "outputs": [],
     "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -234,6 +259,7 @@
       }
     ],
     "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -247,31 +273,7 @@
       }
     ],
     "payable": false,
-    "type": "function"
-  },
-  {
-    "constant": false,
-    "inputs": [
-      {
-        "name": "_entity",
-        "type": "address"
-      },
-      {
-        "name": "_app",
-        "type": "address"
-      },
-      {
-        "name": "_role",
-        "type": "bytes32"
-      },
-      {
-        "name": "_parent",
-        "type": "address"
-      }
-    ],
-    "name": "grantPermission",
-    "outputs": [],
-    "payable": false,
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -294,16 +296,33 @@
       },
       {
         "indexed": false,
-        "name": "parent",
-        "type": "address"
-      },
-      {
-        "indexed": false,
         "name": "allowed",
         "type": "bool"
       }
     ],
     "name": "SetPermission",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "app",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "name": "role",
+        "type": "bytes32"
+      },
+      {
+        "indexed": true,
+        "name": "manager",
+        "type": "address"
+      }
+    ],
+    "name": "ChangePermissionManager",
     "type": "event"
   },
   {
