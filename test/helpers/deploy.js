@@ -187,7 +187,7 @@ export async function deployDAO (t) {
   await kernel.methods.setAppCode(
     namehash.hash('stub.aragonpm.eth'),
     t.context.addresses['StubApp']
-  )
+  ).send({ from: owner })
 
   // Deploy app proxies
   t.log('Deploying app proxies')
@@ -220,7 +220,7 @@ export async function deployDAO (t) {
     [addresses['StubApp4'], addresses['StubApp1']],
     [addresses['StubApp5'], addresses['StubApp3']],
   ]
-  const adminRole = '0x0000000000000000000000000000000000000000000000000000000000000001'
+  const adminRole = await t.context.contracts['StubApp'].methods.ADMIN().call()
 
   let createdPermissions = []
   for (let [from, to] of perms) {
