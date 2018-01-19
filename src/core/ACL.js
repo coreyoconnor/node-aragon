@@ -59,20 +59,17 @@ export default class ACL {
    * Checks if the given address is a forwarder.
    *
    * @param {string} forwarderAddress The address of the suspected forwarder
-   * @return {Boolean}
+   * @return {Promise<boolean>}
    */
-  async isForwarder (forwarderAddress: string): Promise<boolean> {
+  isForwarder (forwarderAddress: string): Promise<boolean> {
     // $FlowFixMe
     const forwarder = new this.web3.eth.Contract(
       require('../../abi/aragon/Forwarder.json'),
       forwarderAddress
     )
 
-    try {
-      return await forwarder.methods.isForwarder().call()
-    } catch (_) {
-      return false
-    }
+    return forwarder.methods.isForwarder().call()
+      .catch(() => false)
   }
 
   /**
@@ -88,7 +85,7 @@ export default class ACL {
       .mergeMap(
         async ({ returnValues: values }) => ({
           app: values.app,
-          isForwarder: await isForwarder(values.app)
+          isForwarder: await this.isForwarder(values.app)
         })
       )
       .filter(
@@ -123,8 +120,6 @@ export default class ACL {
     return forwarder.methods.canForward(senderAddress, script).call()
   }
 
-  // TODO Set `acl.state().forwarder` properties
-  // TODO `acl.forwarders()`
   /**
    * Get a path of transactions that makes it possible to execute a method
    * with the name `method` on `address`.
